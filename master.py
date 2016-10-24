@@ -7,6 +7,11 @@ from tinyrpc.dispatch import public
 from tinyrpc.transports.zmq import ZmqServerTransport
 from tinyrpc.server import RPCServer
 
+# as seen by Master, exposes the ClientService
+class ClientProxy(object):
+	pass
+
+# implements MasterService and ParamService
 class Master(object):
 	def __init__(self):
 		# create the RPC with the Master API

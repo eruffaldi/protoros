@@ -78,3 +78,14 @@ message RequestTopic {
 		required string uri = 2;
 	}
 }
+
+service MasterService {
+  rpc shutdown (Shutdown.Request) returns (Shutdown.Response);
+  rpc getSubscriptions (GetSubscriptions.Request) returns (GetSubscriptions.Response);
+
+  rpc getPublications (GetPublications.Request) returns (GetPublications.Response);
+  rpc paramUpdate (ParamUpdate.Request) returns (ParamUpdate.Response);
+  rpc requestTopic (PublisherUpdate.Request) returns (PublisherUpdate.Response);
+  rpc requestTopic (RequestTopic.Request) returns (RequestTopic.Response);
+
+}

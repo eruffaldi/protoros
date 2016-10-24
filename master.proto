@@ -14,6 +14,7 @@ message RegisterService {
 	}
 }
 
+
 message UnregisterService {
 	message Request
 	{
@@ -90,6 +91,7 @@ message GetState {
 	message Response
 	{
 		required int32 code = 1;
+		repeated string node = 2; // uri of node
 	}
 }
 
@@ -129,4 +131,20 @@ message TopicTypes {
 		required int32 code = 1;
 		repeated QualifiedTopic topic = 2;
 	}
+}
+
+service MasterService {
+  rpc registerService (RegisterService.Request) returns (RegisterService.Response);
+  rpc unregisterService (UnregisterService.Request) returns (UnregisterService.Response);
+
+  rpc registerSubscriber (RegisterSubscriber.Request) returns (RegisterService.Response);
+  rpc unregisterSubscriber (UnregisterSubscriber.Request) returns (UnregisterSubscriber.Response);
+
+  rpc registerPublisher (RegisterPublisher.Request) returns (RegisterPublisher.Response);
+  rpc unregisterPublisher (UnregisterPublisher.Request) returns (UnregisterPublisher.Response);
+
+  rpc getState (GetState.Request) returns (GetState.Response);
+  rpc lookupService (LookupService.Request) returns (LookupService.Response);
+  rpc topicTypes (TopicTypes.Request) returns (TopicTypes.Response);
+
 }
