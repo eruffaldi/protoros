@@ -1,0 +1,5 @@
+message QualifiedTopic
+{
+	required string name = 1;
+	required string type = 2;	
+}

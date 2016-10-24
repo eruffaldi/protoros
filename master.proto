@@ -1,0 +1,132 @@
+import "common.proto";
+
+message RegisterService {
+	message Request
+	{
+		required int32 caller = 1;
+		required string service = 2;
+		required string service_uri = 3;
+		required string client_uri = 4;
+	}
+	message Response
+	{
+
+	}
+}
+
+message UnregisterService {
+	message Request
+	{
+		required int32 caller = 1;
+		required string service_uri = 3;
+	}
+	message Response
+	{
+		required int32 code = 1;		
+	}
+}
+
+
+message RegisterSubscriber {
+	message Request
+	{
+		required int32 caller = 1;
+		required string topic = 2;
+		required string topic_type = 3;
+		required string caller_uri = 4;
+	}
+	message Response
+	{
+		required int32 code = 1;	
+	}
+}
+
+message UnregisterSubscriber {
+	message Request
+	{
+		required int32 caller = 1;
+		required string topic = 2;
+		required string caller_uri = 4;
+	}
+	message Response
+	{
+		required int32 code = 1;	
+	}
+}
+
+
+message RegisterPublisher {
+	message Request
+	{
+		required int32 caller = 1;
+		required string topic = 2;
+		required string topic_type = 3;
+		required string caller_uri = 4;
+	}
+	message Response
+	{
+		required int32 code = 1;
+	}
+}
+
+message UnregisterPublisher {
+	message Request
+	{
+		required int32 caller = 1;
+		required string topic = 2;
+		required string caller_uri = 4;
+	}
+	message Response
+	{
+		required int32 code = 1;
+	}
+}
+
+message GetState {
+	message Request
+	{
+		required int32 caller = 1;
+	}
+	message Response
+	{
+		required int32 code = 1;
+	}
+}
+
+message LookupNode {
+	message Request
+	{
+		required int32 caller_id = 1;
+		required string name = 2;
+	}
+	message Response
+	{
+		required int32 code = 1;
+		required string client_uri = 2;
+	}
+}
+
+message LookupService {
+	message Request
+	{
+		required int32 caller_id = 1;
+		required string name = 2;
+	}
+	message Response
+	{
+		required int32 code = 1;
+		required string service_uri = 2;
+	}
+}
+
+message TopicTypes {
+	message Request
+	{
+		required int32 caller_id = 1;
+	}
+	message Response
+	{
+		required int32 code = 1;
+		repeated QualifiedTopic topic = 2;
+	}
+}

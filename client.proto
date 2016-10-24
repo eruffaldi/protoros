@@ -1,0 +1,80 @@
+import "common.proto";
+
+message Shutdown {
+	message Request
+	{
+		required int32 caller = 1;
+		required string reason = 2;
+	}
+	message Response
+	{
+		required int32 code = 1;
+	}
+}
+
+message GetSubscriptions {
+	message Request
+	{
+		required int32 caller = 1;
+	}
+	message Response
+	{
+		required int32 code = 1;
+		required QualifiedTopic topic = 2;
+	}
+}
+
+
+message GetPublications {
+	message Request
+	{
+		required int32 caller = 1;
+	}
+	message Response
+	{
+		required QualifiedTopic topic = 1;
+		required int32 code = 2;
+	}
+}
+
+
+message ParamUpdate {
+	message Request
+	{
+		required int32 caller = 1;
+		required string key = 2;
+		repeated bytes value = 3;
+	}
+	message Response
+	{
+		required int32 code = 1;
+	}
+}
+
+
+message PublisherUpdate {
+	message Request
+	{
+		required int32 caller = 1;
+		required string topic = 2;
+		repeated string publisher = 3;
+	}
+	message Response
+	{
+		required int32 code = 1;
+	}
+}
+
+message RequestTopic {
+	message Request
+	{
+		required int32 caller = 1;
+		required string topic = 2;
+		repeated string protocol = 3;
+	}
+	message Response
+	{
+		required int32 code = 1;
+		required string uri = 2;
+	}
+}
